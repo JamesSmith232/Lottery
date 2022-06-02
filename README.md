@@ -11,8 +11,14 @@ user to purchase their lottery tickets, and generate the winning numbers. When a
 use the respect subclass and set up the ticket using the rules defined by either powerball or megamillions. Checks to 
 see if the users ticket is a winner.
  - **_LotteryTicket:_** this class represents purchasing a lottery ticket. Inside this class, it refrences the current object 
-to create a powerball or megamillion ticket. It takes the users picks, sorts them and converts them to string. 
-- **_LotteryGame:_** is an abstract superclass for the lottery. 
+to create a powerball or megamillion ticket. It takes the users picks, sorts them and converts them to a string varaible. 
+- **_LotteryGame:_** is an abstract superclass for the the two following classes PowerBall and MegaMillions. The reason we use
+an abstract class like this is because both powerball and megamillions have different aspects about each, but both fall under
+a lottery ticket. A powerball's max pick is 69 and the megamillions max pick is 75, but they each have a max pick. The purpose 
+of a abstract class is to be used as a base for their subclasses. This class does use a getPicks(), isRepeat(), and countMatches()
+methods since this can be used for each subclass.
+- **_PowerBall:_** this class represents purchasing a lottery ticket. Inside this class, it refrences the current object 
+to create a powerball or megamillion ticket. It takes the users picks, sorts them and converts them to a string varaible. 
 
 ## Outcome
 <p align="center">
