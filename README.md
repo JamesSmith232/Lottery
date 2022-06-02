@@ -17,8 +17,12 @@ an abstract class like this is because both powerball and megamillions have diff
 a lottery ticket. A powerball's max pick is 69 and the megamillions max pick is 75, but they each have a max pick. The purpose 
 of a abstract class is to be used as a base for their subclasses. This class does use a getPicks(), isRepeat(), and countMatches()
 methods since this can be used for each subclass.
-- **_PowerBall:_** this class represents purchasing a lottery ticket. Inside this class, it refrences the current object 
-to create a powerball or megamillion ticket. It takes the users picks, sorts them and converts them to a string varaible. 
+- **_PowerBall:_** one of the subclasses for abstract class LotteryGame. Using inheritance, this allows reusing of fields and methods 
+without having to write extra code. The class Powerball uses getAmountWon(), quickPickTicket(), and userPickTicket() methods. These 
+three are also found in the next subclass, but since Powerball and Megamillions has different rules they abide under. These methods 
+will differ slightly. 
+- **_MegaMillions:_** the last subclass for abstract class LotteryGame. Similar to Powerball, it uses the same methods but changes 
+them to fit the criteria of the Megamillions rules. 
 
 ## Outcome
 <p align="center">
