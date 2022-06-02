@@ -19,6 +19,7 @@ public class LotteryTicket {
     protected int specialPick; 
     
     public LotteryTicket(int [] pick, int specialPick) {
+        //.this is a reference varaible for the current object 
         this.pick = new int[pick.length]; 
         for (int i = 0; i < pick.length; i++) {
             this.pick[i] = pick[i]; 
