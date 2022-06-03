@@ -21,16 +21,19 @@ public class LotteryTicket {
     public LotteryTicket(int [] pick, int specialPick) {
         //.this is a reference varaible for the current object 
         this.pick = new int[pick.length]; 
+        //fills the current object with user picks 
         for (int i = 0; i < pick.length; i++) {
             this.pick[i] = pick[i]; 
         }
         
         if (specialPick > 0) this.specialPick = specialPick; 
         
+        //increments to the next ticket 
         ticket = nextTicket; 
         nextTicket++; 
     } //end of LotteryTicket() method 
     
+    //returns the current object's ticket number
     public int getTicket() {
         return this.ticket; 
     } //end of getTicket() method
@@ -38,10 +41,12 @@ public class LotteryTicket {
     public int[] getPicks() {
         int[] copyPicks = new int[this.pick.length];
         
+        //fills copyPicks array with current objects values
         for (int i = 0; i < this.pick.length; i++) {
             copyPicks[i] = this.pick[i]; 
         }
         
+        //sorts array using .sort() function
         Arrays.sort(copyPicks); 
         return copyPicks; 
     } //end of getPicks() method
@@ -50,6 +55,7 @@ public class LotteryTicket {
         return this.specialPick; 
     } //end of getSpecialPick() method
     
+    //converts the picks to a string, which will be displayed to the user
     public String toString() {
         int[] sortedPick = new int[this.pick.length];
         sortedPick = this.pick; 
@@ -59,6 +65,7 @@ public class LotteryTicket {
         return ticket;      
     } //end of toString() method
     
+    //uses the .equals() function to check if the current object equals the ticket variable 
     public boolean equals(int[] ticket) {
         if (Arrays.equals(this.pick, ticket)) return true; 
         else return false; 
