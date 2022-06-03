@@ -25,7 +25,7 @@ public abstract class LotteryGame {
     static final int MILLION = 1000000; 
     static int[] generatedPicks = new int[5]; 
     
-    //constructor 
+    //constructor method to initialize objects
     public LotteryGame(int numOfPicks, int minPick, int maxPick) {
         if (numOfPicks > 0 && minPick > 0 && maxPick > 0) {
             this.numOfPicks = numOfPicks; 
@@ -54,22 +54,27 @@ public abstract class LotteryGame {
     //end of the abstract methods
     
     protected int[] getPicks(int max) {
-       int number; 
        final int MIN = 1; 
+       int number; 
        int range = (max - MIN + 1); 
        
+       //gets randomly generated numbers to fill an array if the user does not want to choose his own 
        for (int i = 0; i < generatedPicks.length; ) {
+           //Math.random() function is used to get a random number in the desired range 
            number = (int)(Math.random() * range) + MIN; 
+           //checks to see if the random number is unique by using the isRepeat() method 
            if (isRepeat(number) == false) {
                generatedPicks[i] = number; 
                i++;
            }
        }
        
+       //returns sorted array with the random numbers
        Arrays.sort(generatedPicks); 
        return generatedPicks; 
     } //end of getPicks() method
     
+    //checks if number given is unique in the generatedPicks[] array
     protected boolean isRepeat(int number) {
         boolean isRepeat = false; 
         for (int i = 0; i < generatedPicks.length; i++) {
@@ -90,6 +95,8 @@ public abstract class LotteryGame {
             }
         }
         
+        //two for loops to go through the user picks and the winning ticket to find matches
+        //the count varaible is incremented everytime there is a match, and returned at the end of the method
         yourTicket = this.ticket[ticketCount];
         for (int i = 0; i < yourTicket.getPicks().length; i++) {
             for (int j = 0; j < winningTicket.getPicks().length; j++) {
