@@ -23,6 +23,7 @@ public class PowerBall extends LotteryGame {
         super(NUM_OF_PICKS, MIN_PICK, MAX_PICK); 
         this.winningTicket = new LotteryTicket(getPicks(MAX_PICK), getSpecialPick());
         
+        //fills the prize array
         this.prize = new String[11]; 
         this.prize[0] = "$4";
         this.prize[1] = "$4";
@@ -51,6 +52,7 @@ public class PowerBall extends LotteryGame {
     protected int getMaxSpecialPick() { return MAX_SPECIAL; }
     //end of the abstract methods
     
+    //getSpecialPick() uses the min and max that follows the powerball ruleset
     @Override 
     protected int getSpecialPick() {
        int range = (MAX_SPECIAL - MIN_SPECIAL + 1); 
@@ -70,6 +72,7 @@ public class PowerBall extends LotteryGame {
         int specialPick = winningTicket.getSpecialPick();
         int ticketCount = 0; 
         
+        //initializes the winnings[] with the prize values from earlier
         winnings = this.prize; 
         
         for (int i = 0; i < this.ticket.length; i++) {
