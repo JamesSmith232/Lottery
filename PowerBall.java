@@ -52,7 +52,7 @@ public class PowerBall extends LotteryGame {
     protected int getMaxSpecialPick() { return MAX_SPECIAL; }
     //end of the abstract methods
     
-    //getSpecialPick() uses the min and max that follows the powerball ruleset
+    //uses the min and max of the powerball ruleset to get the special pick in the range of 1-26
     @Override 
     protected int getSpecialPick() {
        int range = (MAX_SPECIAL - MIN_SPECIAL + 1); 
@@ -75,15 +75,20 @@ public class PowerBall extends LotteryGame {
         //initializes the winnings[] with the prize values from earlier
         winnings = this.prize; 
         
+        //uses the getTicket() to find the correct ticket which initializes ticketCount 
+        //with how many loops it took to get there
         for (int i = 0; i < this.ticket.length; i++) {
             if (this.ticket[i] != null) {
                 if (this.ticket[i].getTicket() == ticketNum) ticketCount = i;              
             }
         }
         
+        //initializes yourTicket to the current object with the ticketCount number
         yourTicket = this.ticket[ticketCount]; 
         
+        //checks if your ticket's special pick matches the one generated
         if (yourTicket.getSpecialPick() == specialPick) isSpecialWin = true; 
+        //if specialWin is true, winnings will be different then what is to follow
         if (isSpecialWin == true) {
             switch (countMatches) {
                 case 0: 
@@ -107,6 +112,7 @@ public class PowerBall extends LotteryGame {
                 default: 
                     break; 
             } 
+        //gets winnings when isSpecialWin is false
         } else {
             switch (countMatches) {
                 case 0: 
@@ -135,6 +141,8 @@ public class PowerBall extends LotteryGame {
         return amountWin; 
     }
     
+    //generates a ticket and its numbers to give to the user who does not want to give their own picks 
+    //follows the range using the rules given by powerball ruleset
     @Override
     protected String quickPickTicket() {
         LotteryTicket yourTicket; 
@@ -154,6 +162,7 @@ public class PowerBall extends LotteryGame {
         return yourTicketDetails; 
     } //end of getQuickPickTicket() method
     
+    //creates a powerball ticket using the numbers given by user 
     @Override
     protected String userPickTicket(int[] picks, int specialPick) {
         Arrays.sort(picks);
