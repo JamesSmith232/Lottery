@@ -52,6 +52,7 @@ public class MegaMillions extends LotteryGame {
     protected int getMaxSpecialPick() { return MAX_SPECIAL; }
     //end of the abstract methods
     
+    //uses the min and max of the powerball ruleset to get the special pick in the range of 1-15
     @Override 
     protected int getSpecialPick() {
        int range = (MAX_SPECIAL - MIN_SPECIAL + 1); 
@@ -70,16 +71,20 @@ public class MegaMillions extends LotteryGame {
         int specialPick = winningTicket.getSpecialPick(); 
         int ticketCount = 0; 
         
+        //initializes the winnings[] with the prize values from earlier
         winnings = this.prize; 
         
+        //uses the getTicket() to find the correct ticket which initializes ticketCount 
+        //with how many loops it took to get there
         for (int i = 0; i < this.ticket.length; i++) {
             if (this.ticket[i] != null) {
                 if (this.ticket[i].getTicket() == ticketNum) ticketCount = i; 
             }
         }
         
+        //initializes yourTicket to the current object with the ticketCount number
         yourTicket = this.ticket[ticketCount]; 
-        
+        //if specialWin is true, winnings will be different then what is to follow
         if (yourTicket.getSpecialPick() == specialPick) isSpecialWin = true; 
         if (isSpecialWin == true) {
             switch (countMatches) {
@@ -104,6 +109,7 @@ public class MegaMillions extends LotteryGame {
                 default: 
                     break; 
             }
+        //gets winnings when isSpecialWin is false
         } else {
             switch (countMatches) {
                 case 0: 
@@ -132,6 +138,8 @@ public class MegaMillions extends LotteryGame {
         return amountWin; 
     } //end of getAmountWon() method
     
+    //generates a ticket and its numbers to give to the user who does not want to give their own picks 
+    //follows the range using the rules given by megamillions ruleset
     @Override 
     protected String quickPickTicket() { 
         String yourTicketDetails;
@@ -149,6 +157,7 @@ public class MegaMillions extends LotteryGame {
         return yourTicketDetails;    
     } //end of quickPickTicket() method
     
+    //creates a megamillion ticket using the numbers given by user 
     @Override 
     protected String userPickTicket(int[] picks, int specialPick) {
         String yourTicketDetails; 
